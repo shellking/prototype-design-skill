@@ -1,0 +1,35 @@
+# OS / editor
+.DS_Store
+Thumbs.db
+*.swp
+.idea/
+.vscode/
+*.code-workspace
+
+# Secrets & local credentials — never commit
+.secrets/
+**/.secrets/
+*.pem
+*.key
+*credentials*
+*password*
+*token*
+.env
+.env.*
+
+# Personal / runtime / usage artifacts
+**/usage*/
+**/personal*/
+**/*-selfcheck.json
+**/*-delivery-pass.json
+**/*-recon.json
+**/*external-review*
+**/node_modules/
+.cache/
+.tmp/
+
+# Local demand work packages (keep skill only)
+demands/
+08-demands/
+work/
+_scratch/
