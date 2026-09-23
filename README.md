@@ -21,8 +21,6 @@ design-system/
 - 密码、凭据、内网地址、业务需求数据、个人使用记录
 - 某家公司的平台 Runtime / Hook / 自动化脚本实现
 
-脱敏约定见 [SECURITY.md](./SECURITY.md)。
-
 ## 快速开始
 
 1. 将 `prototype-design/` 拷到 Cursor 的 `.cursor/skills/prototype-design/`（或个人 `~/.cursor/skills/`）
