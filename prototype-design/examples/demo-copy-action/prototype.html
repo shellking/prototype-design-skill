@@ -26,32 +26,48 @@ body{ margin:0; background:#eef1f5; font:14px/1.5 -apple-system,"Segoe UI","Micr
 .proto-pin-tl{ position:absolute; top:-9px; left:-9px; z-index:7; }
 .proto-pin-tr{ position:absolute; top:-9px; right:-9px; z-index:7; }
 .note-item .proto-pin{ margin-top:1px; }
-.page{ display:flex; min-height:420px; background:#f7f8fa; border:1px solid #e5e6eb; border-radius:4px; overflow:hidden; }
-.side{ width:168px; background:#fff; border-right:1px solid #e5e6eb; padding:16px 12px; }
-.side .logo{ font-weight:600; margin-bottom:16px; }
-.side .item{ padding:8px 10px; border-radius:4px; color:#646a73; margin-bottom:4px; }
-.side .item.on{ background:#e8f3ff; color:#3370ff; }
-.main{ flex:1; padding:16px 18px 20px; }
-.crumb{ color:#8f959e; font-size:12px; margin-bottom:8px; }
-.toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
-.toolbar h2{ margin:0; font-size:18px; }
-.search{ height:32px; border:1px solid #d0d5dd; border-radius:4px; padding:0 10px; width:180px; background:#fff; }
-table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e6eb; border-radius:4px; }
-th,td{ text-align:left; padding:10px 12px; border-bottom:1px solid #eef0f3; font-size:13px; }
-th{ background:#fafbfc; color:#646a73; font-weight:500; }
-.btn{ border:1px solid #d0d5dd; background:#fff; border-radius:4px; padding:5px 12px; font-size:13px; }
-.btn.primary{ background:#3370ff; border-color:#3370ff; color:#fff; }
-.btn.ghost{ color:#3370ff; border-color:transparent; background:transparent; padding-left:0; padding-right:8px; }
-.modal-wrap{ min-height:260px; display:flex; align-items:flex-start; justify-content:center; padding:36px 0; }
-.modal{ width:440px; background:#fff; border-radius:6px; box-shadow:0 8px 28px rgba(0,0,0,.12); }
-.modal header{ padding:14px 18px; font-weight:600; border-bottom:1px solid #eef0f3; }
-.modal .body{ padding:16px 18px; }
-.field{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
-.field label{ width:64px; text-align:right; color:#646a73; }
-.field input{ flex:1; height:32px; border:1px solid #d0d5dd; border-radius:4px; padding:0 8px; }
-.footer{ display:flex; gap:8px; justify-content:flex-end; padding:12px 18px; border-top:1px solid #eef0f3; }
-.toast{ margin:0 18px 12px; background:#fff2f0; color:#cf1322; border:1px solid #ffccc7; border-radius:4px; padding:8px 10px; font-size:13px; }
-.empty{ background:#fff; border:1px dashed #d0d5dd; border-radius:6px; min-height:220px; display:flex; align-items:center; justify-content:center; color:#8f959e; }
+.app{ display:flex; min-height:460px; background:#f4f6fb; border:1px solid #e6e8ef; border-radius:12px; overflow:hidden; box-shadow:0 1px 2px rgba(16,24,40,.04); }
+.nav{ width:196px; background:#fff; border-right:1px solid #e8ebf2; padding:18px 12px; display:flex; flex-direction:column; }
+.brand{ display:flex; align-items:center; gap:8px; font-weight:650; font-size:15px; padding:0 8px 16px; }
+.mark{ width:22px; height:22px; border-radius:7px; background:linear-gradient(135deg,#3370ff,#6aa1ff); }
+.nav-label{ font-size:11px; color:#98a2b3; letter-spacing:.04em; padding:8px 10px 6px; }
+.nav-item{ display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; color:#475467; margin-bottom:2px; font-size:13px; }
+.nav-item.on{ background:#eef4ff; color:#175cd3; font-weight:600; }
+.dot{ width:6px; height:6px; border-radius:50%; background:#d0d5dd; }
+.nav-item.on .dot{ background:#3370ff; }
+.nav-user{ margin-top:auto; display:flex; gap:8px; align-items:center; padding:10px 8px 2px; border-top:1px solid #eef0f4; }
+.avatar{ width:28px; height:28px; border-radius:50%; background:#eef4ff; color:#175cd3; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; }
+.nav-user em{ display:block; font-style:normal; color:#98a2b3; font-size:12px; }
+.content{ flex:1; padding:18px 20px 22px; }
+.topbar{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px; }
+.crumb{ color:#98a2b3; font-size:12px; margin-bottom:2px; }
+.topbar h2{ margin:0; font-size:20px; font-weight:650; letter-spacing:-.02em; }
+.top-actions{ display:flex; gap:8px; align-items:center; }
+.search{ height:34px; border:1px solid #e4e7ec; border-radius:8px; padding:0 12px; width:200px; background:#fff; color:#98a2b3; display:flex; align-items:center; font-size:13px; }
+.card{ background:#fff; border:1px solid #e8ebf2; border-radius:12px; overflow:hidden; }
+table{ width:100%; border-collapse:collapse; }
+th,td{ text-align:left; padding:12px 16px; border-bottom:1px solid #f2f4f7; font-size:13px; }
+th{ background:#fafbfc; color:#667085; font-weight:500; font-size:12px; }
+tr:last-child td{ border-bottom:0; }
+.who{ display:flex; align-items:center; gap:8px; }
+.pill{ display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:999px; font-size:12px; background:#f2f4f7; color:#475467; }
+.pill.go{ background:#ecfdf3; color:#067647; }
+.ops{ display:flex; gap:12px; align-items:center; }
+.link{ border:0; background:transparent; color:#175cd3; padding:0; font-size:13px; }
+.btn{ border:1px solid #d0d5dd; background:#fff; border-radius:8px; padding:6px 12px; font-size:13px; }
+.btn.primary{ background:#175cd3; border-color:#175cd3; color:#fff; }
+.modal-wrap{ min-height:280px; display:flex; align-items:center; justify-content:center; background:rgba(16,24,40,.45); border-radius:12px; }
+.modal{ width:440px; background:#fff; border-radius:12px; box-shadow:0 20px 40px rgba(16,24,40,.18); }
+.modal header{ display:flex; align-items:center; justify-content:space-between; padding:14px 16px; font-weight:650; border-bottom:1px solid #f2f4f7; }
+.x{ width:28px; height:28px; border:0; border-radius:8px; background:#f2f4f7; color:#475467; font-size:16px; line-height:1; }
+.modal .body{ padding:18px 16px 6px; }
+.field{ display:flex; gap:12px; align-items:center; margin-bottom:14px; }
+.field label{ width:64px; text-align:right; color:#667085; font-size:13px; }
+.field input{ flex:1; height:36px; border:1px solid #e4e7ec; border-radius:8px; padding:0 10px; }
+.footer{ display:flex; gap:8px; justify-content:flex-end; padding:12px 16px 16px; }
+.toast{ margin:0 16px 8px; background:#fff2f0; color:#cf1322; border:1px solid #ffccc7; border-radius:8px; padding:8px 10px; font-size:13px; }
+.empty{ background:#fff; border:1px solid #e8ebf2; border-radius:12px; min-height:240px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:#667085; }
+.empty b{ color:#101828; font-size:15px; }
 .foot-space{ height:28px; }
 </style>
 </head>
@@ -72,35 +88,62 @@ th{ background:#fafbfc; color:#646a73; font-weight:500; }
   </div>
   <div class="proto-layout">
     <div class="proto-stage">
-      <div class="page">
-        <aside class="side">
-          <div class="logo">工作台</div>
-          <div class="item">概览</div>
-          <div class="item on">计划</div>
-          <div class="item">成员</div>
+      <div class="app">
+        <aside class="nav">
+          <div class="brand"><span class="mark"></span> North</div>
+          <div class="nav-label">工作区</div>
+          <div class="nav-item"><span class="dot"></span>概览</div>
+          <div class="nav-item on"><span class="dot"></span>计划</div>
+          <div class="nav-item"><span class="dot"></span>成员</div>
+          <div class="nav-user"><span class="avatar">林</span><span>林夏<em>管理员</em></span></div>
         </aside>
-        <div class="main">
-          <div class="crumb">计划 / 全部</div>
-          <div class="toolbar">
-            <h2>计划列表</h2>
-            <input class="search" value="搜索计划" readonly>
+        <div class="content">
+          <div class="topbar">
+            <div>
+              <div class="crumb">工作区 / 计划</div>
+              <h2>计划</h2>
+            </div>
+            <div class="top-actions">
+              <div class="search">搜索计划</div>
+              <button class="btn primary" type="button">新建</button>
+            </div>
           </div>
-          <table>
-            <thead><tr><th>名称</th><th>负责人</th><th>状态</th><th>操作</th></tr></thead>
-            <tbody>
-              <tr>
-                <td>季度计划</td><td>林夏</td><td>进行中</td>
-                <td>
-                  <button class="btn ghost" type="button">编辑</button>
-                  <span class="proto-dash" style="display:inline-block;position:relative">
-                    <span class="proto-pin proto-pin-tl">1</span>
-                    <button class="btn ghost" type="button">复制</button>
-                  </span>
-                </td>
-              </tr>
-              <tr><td>新品上架</td><td>周宁</td><td>未开始</td><td><button class="btn ghost" type="button">编辑</button></td></tr>
-            </tbody>
-          </table>
+          <div class="card">
+            <table>
+              <thead><tr><th>名称</th><th>负责人</th><th>状态</th><th>更新</th><th>操作</th></tr></thead>
+              <tbody>
+                <tr>
+                  <td>季度计划</td>
+                  <td><span class="who"><span class="avatar">林</span>林夏</span></td>
+                  <td><span class="pill go">进行中</span></td>
+                  <td>今天 09:24</td>
+                  <td>
+                    <div class="ops">
+                      <button class="link" type="button">编辑</button>
+                      <span class="proto-dash" style="display:inline-block;position:relative">
+                        <span class="proto-pin proto-pin-tl">1</span>
+                        <button class="link" type="button">复制</button>
+                      </span>
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>新品上架</td>
+                  <td><span class="who"><span class="avatar">周</span>周宁</span></td>
+                  <td><span class="pill">未开始</span></td>
+                  <td>昨天</td>
+                  <td><button class="link" type="button">编辑</button></td>
+                </tr>
+                <tr>
+                  <td>渠道复盘</td>
+                  <td><span class="who"><span class="avatar">陈</span>陈可</span></td>
+                  <td><span class="pill go">进行中</span></td>
+                  <td>3 天前</td>
+                  <td><button class="link" type="button">编辑</button></td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
@@ -128,7 +171,7 @@ th{ background:#fafbfc; color:#646a73; font-weight:500; }
     <div class="proto-stage">
       <div class="modal-wrap">
         <div class="modal">
-          <header>复制条目</header>
+          <header>复制条目<button class="x" type="button" aria-label="关闭">×</button></header>
           <div class="body">
             <div class="field">
               <label>名称</label>
@@ -160,7 +203,7 @@ th{ background:#fafbfc; color:#646a73; font-weight:500; }
       </div>
       <div class="note-item">
         <span class="proto-pin">2</span>
-        <div><span class="note-typ">交互</span>主按钮在左。保存成功关闭弹层，回到 01，新行出现在当前页顶部。取消关闭且不新增。</div>
+        <div><span class="note-typ">交互</span>主按钮在左。右上角关闭与取消相同，不新增。保存成功关闭弹层，回到 01，新行出现在当前页顶部。</div>
       </div>
     </aside>
   </div>
@@ -175,7 +218,7 @@ th{ background:#fafbfc; color:#646a73; font-weight:500; }
     <div class="proto-stage">
       <div class="modal-wrap">
         <div class="modal">
-          <header>复制条目</header>
+          <header>复制条目<button class="x" type="button" aria-label="关闭">×</button></header>
           <div class="body">
             <div class="field">
               <label>名称</label>
@@ -214,14 +257,18 @@ th{ background:#fafbfc; color:#646a73; font-weight:500; }
   </div>
   <div class="proto-layout">
     <div class="proto-stage">
-      <div class="page">
-        <aside class="side">
-          <div class="logo">工作台</div>
-          <div class="item on">计划</div>
+      <div class="app">
+        <aside class="nav">
+          <div class="brand"><span class="mark"></span> North</div>
+          <div class="nav-label">工作区</div>
+          <div class="nav-item on"><span class="dot"></span>计划</div>
+          <div class="nav-user"><span class="avatar">林</span><span>林夏<em>管理员</em></span></div>
         </aside>
-        <div class="main">
-          <div class="toolbar"><h2>计划列表</h2></div>
-          <div class="empty">暂无计划</div>
+        <div class="content">
+          <div class="topbar">
+            <div><div class="crumb">工作区 / 计划</div><h2>计划</h2></div>
+          </div>
+          <div class="empty"><b>还没有计划</b><span>新建一条之后，才会出现复制</span></div>
         </div>
       </div>
     </div>
