@@ -6,9 +6,9 @@ Cursor、Claude Code、Codex、ZCode、OpenCode、WorkBuddy 等能加载 `SKILL.
 
 ## 画出来是这样
 
-样例一共四帧：列表、复制弹层、保存失败、空列表。弹层带右上角关闭，底部「保存」在左、「取消」在右。失败提示只有一层红虚线。页面不含品牌 logo。
+样例一共四帧，和下面这张图一致：列表、复制弹层、保存失败、空列表。左上角是「教育管理后台」文字，没有品牌 logo。弹层右上角有关闭，底部「保存」在左、「取消」在右。
 
-![四帧样张：列表改动、弹层、失败态、空状态](docs/preview.png)
+![四帧样张：列表、复制弹层、保存失败、空列表](docs/sample.png)
 
 本地打开 [prototype-design/examples/demo-copy-action/prototype.html](prototype-design/examples/demo-copy-action/prototype.html)。同目录有填好的摸底、结构稿和澄清。
 
