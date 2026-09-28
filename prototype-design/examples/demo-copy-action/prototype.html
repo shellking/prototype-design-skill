@@ -5,11 +5,14 @@
 <title>DEMO-001 原型 · 列表增加复制</title>
 <style>
 *{ box-sizing:border-box; }
-body{ margin:0; background:#f5f6f8; font:14px/1.5 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; color:#333; }
+body{ margin:0; background:#eef1f5; font:14px/1.5 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; color:#1f2329; }
 .doc-head{ background:#fff; border-bottom:1px solid #e3e6ea; padding:13px 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; position:sticky; top:0; z-index:100; }
+.doc-head strong{ font-size:16px; }
+.doc-head .meta{ color:#646a73; font-size:13px; }
+.legend{ margin-left:auto; font-size:12px; color:#646a73; }
 .band{ padding:22px 24px 2px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:8px; }
 .band::before{ content:""; width:4px; height:15px; background:#3370FF; border-radius:2px; }
-.proto-frame{ margin:14px 24px 24px; background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.proto-frame{ margin:14px 24px 0; background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
 .proto-frame-head{ display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #eef0f3; background:#fbfbfc; }
 .proto-layout{ display:flex; align-items:stretch; }
 .proto-stage{ flex:1; min-width:0; position:relative; overflow-x:auto; overflow-y:visible; background:#eef1f5; padding:24px; }
@@ -21,55 +24,216 @@ body{ margin:0; background:#f5f6f8; font:14px/1.5 -apple-system,"Segoe UI","Micr
 .proto-dash::after{ content:""; position:absolute; left:-5px; right:-5px; top:-4px; bottom:-4px; border:1px dashed #f5222d; border-radius:3px; pointer-events:none; z-index:6; }
 .proto-pin{ display:inline-flex; width:18px; height:18px; border-radius:50%; background:#f5222d; color:#fff; font:600 12px/1 sans-serif; align-items:center; justify-content:center; flex-shrink:0; }
 .proto-pin-tl{ position:absolute; top:-9px; left:-9px; z-index:7; }
+.proto-pin-tr{ position:absolute; top:-9px; right:-9px; z-index:7; }
 .note-item .proto-pin{ margin-top:1px; }
-.legend{ font-size:12px; color:#666; }
-.demo-panel{ background:#fff; border:1px solid #e3e6ea; border-radius:4px; padding:16px 18px; max-width:480px; }
-.demo-panel h3{ margin:0 0 12px; font-size:15px; }
-.demo-row{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
-.demo-row label{ width:72px; text-align:right; color:#666; font-size:13px; }
-.demo-actions{ display:flex; gap:10px; margin-top:16px; padding-top:12px; border-top:1px solid #eef0f3; }
-.demo-btn{ border:1px solid #d0d5dd; background:#fff; border-radius:3px; padding:6px 14px; font-size:13px; }
-.demo-btn.primary{ background:#3370FF; border-color:#3370FF; color:#fff; }
+.page{ display:flex; min-height:420px; background:#f7f8fa; border:1px solid #e5e6eb; border-radius:4px; overflow:hidden; }
+.side{ width:168px; background:#fff; border-right:1px solid #e5e6eb; padding:16px 12px; }
+.side .logo{ font-weight:600; margin-bottom:16px; }
+.side .item{ padding:8px 10px; border-radius:4px; color:#646a73; margin-bottom:4px; }
+.side .item.on{ background:#e8f3ff; color:#3370ff; }
+.main{ flex:1; padding:16px 18px 20px; }
+.crumb{ color:#8f959e; font-size:12px; margin-bottom:8px; }
+.toolbar{ display:flex; justify-content:space-between; align-items:center; margin-bottom:12px; }
+.toolbar h2{ margin:0; font-size:18px; }
+.search{ height:32px; border:1px solid #d0d5dd; border-radius:4px; padding:0 10px; width:180px; background:#fff; }
+table{ width:100%; border-collapse:collapse; background:#fff; border:1px solid #e5e6eb; border-radius:4px; }
+th,td{ text-align:left; padding:10px 12px; border-bottom:1px solid #eef0f3; font-size:13px; }
+th{ background:#fafbfc; color:#646a73; font-weight:500; }
+.btn{ border:1px solid #d0d5dd; background:#fff; border-radius:4px; padding:5px 12px; font-size:13px; }
+.btn.primary{ background:#3370ff; border-color:#3370ff; color:#fff; }
+.btn.ghost{ color:#3370ff; border-color:transparent; background:transparent; padding-left:0; padding-right:8px; }
+.modal-wrap{ min-height:260px; display:flex; align-items:flex-start; justify-content:center; padding:36px 0; }
+.modal{ width:440px; background:#fff; border-radius:6px; box-shadow:0 8px 28px rgba(0,0,0,.12); }
+.modal header{ padding:14px 18px; font-weight:600; border-bottom:1px solid #eef0f3; }
+.modal .body{ padding:16px 18px; }
+.field{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+.field label{ width:64px; text-align:right; color:#646a73; }
+.field input{ flex:1; height:32px; border:1px solid #d0d5dd; border-radius:4px; padding:0 8px; }
+.footer{ display:flex; gap:8px; justify-content:flex-end; padding:12px 18px; border-top:1px solid #eef0f3; }
+.toast{ margin:0 18px 12px; background:#fff2f0; color:#cf1322; border:1px solid #ffccc7; border-radius:4px; padding:8px 10px; font-size:13px; }
+.empty{ background:#fff; border:1px dashed #d0d5dd; border-radius:6px; min-height:220px; display:flex; align-items:center; justify-content:center; color:#8f959e; }
+.foot-space{ height:28px; }
 </style>
 </head>
 <body>
+
 <header class="doc-head">
   <strong>列表增加复制</strong>
-  <span>DEMO-001</span>
-  <span>v1</span>
-  <span>产线：admin</span>
-  <span>终端：PC</span>
-  <span class="legend">红虚线=变化点 ｜ 红编号=对应右侧说明</span>
+  <span class="meta">DEMO-001 · v1 · admin · PC</span>
+  <span class="legend">红虚线 = 局部改动 · 红编号 = 右侧说明 · 整页新增不圈</span>
 </header>
-<div class="band">PC · 样张</div>
-<section class="proto-frame" data-screen-label="01 复制条目">
-  <div class="proto-frame-head"><span>01 从列表复制 · 弹层预填</span><span style="color:#888;font-size:12px">sample</span></div>
+
+<div class="band">已有列表 · 只圈改动</div>
+
+<section class="proto-frame" data-screen-label="01 列表">
+  <div class="proto-frame-head">
+    <span>01 列表 · 操作列增加「复制」</span>
+    <span style="color:#8f959e;font-size:12px">既有页局部改</span>
+  </div>
   <div class="proto-layout">
     <div class="proto-stage">
-      <div class="demo-panel">
-        <h3>复制条目</h3>
-        <div class="demo-row">
-          <label>名称</label>
-          <span class="proto-dash" style="display:inline-block;position:relative">
-            <span class="proto-pin proto-pin-tl">1</span>
-            <input style="width:220px;height:32px;border:1px solid #d0d5dd;border-radius:3px;padding:0 8px" value="季度计划副本">
-          </span>
-        </div>
-        <div class="demo-actions">
-          <span class="proto-dash" style="display:inline-block;position:relative">
-            <span class="proto-pin proto-pin-tl">2</span>
-            <button type="button" class="demo-btn primary">保存</button>
-          </span>
-          <button type="button" class="demo-btn">取消</button>
+      <div class="page">
+        <aside class="side">
+          <div class="logo">工作台</div>
+          <div class="item">概览</div>
+          <div class="item on">计划</div>
+          <div class="item">成员</div>
+        </aside>
+        <div class="main">
+          <div class="crumb">计划 / 全部</div>
+          <div class="toolbar">
+            <h2>计划列表</h2>
+            <input class="search" value="搜索计划" readonly>
+          </div>
+          <table>
+            <thead><tr><th>名称</th><th>负责人</th><th>状态</th><th>操作</th></tr></thead>
+            <tbody>
+              <tr>
+                <td>季度计划</td><td>林夏</td><td>进行中</td>
+                <td>
+                  <button class="btn ghost" type="button">编辑</button>
+                  <span class="proto-dash" style="display:inline-block;position:relative">
+                    <span class="proto-pin proto-pin-tl">1</span>
+                    <button class="btn ghost" type="button">复制</button>
+                  </span>
+                </td>
+              </tr>
+              <tr><td>新品上架</td><td>周宁</td><td>未开始</td><td><button class="btn ghost" type="button">编辑</button></td></tr>
+            </tbody>
+          </table>
         </div>
       </div>
     </div>
     <aside class="note-panel">
       <div class="note-panel-title">说明</div>
-      <div class="note-item"><span class="proto-pin">1</span><div><span class="note-typ">规则</span>名称预填为原名称加「副本」，可改。</div></div>
-      <div class="note-item"><span class="proto-pin">2</span><div><span class="note-typ">交互</span>保存成功后关闭弹层并回到列表，新行出现在当前页。</div></div>
+      <div class="note-item">
+        <span class="proto-pin">1</span>
+        <div><span class="note-typ">交互</span>仅在已有行的操作列、编辑之后增加「复制」。点击后打开 02 的弹层，并预填该行。</div>
+      </div>
+      <div class="note-item">
+        <div><span class="note-typ">边界</span>无数据行时不出现「复制」。侧栏、表头、编辑沿用现网，不圈。</div>
+      </div>
     </aside>
   </div>
 </section>
+
+<div class="band">同一弹层 · 每个状态单独一帧</div>
+
+<section class="proto-frame" data-screen-label="02 弹层默认">
+  <div class="proto-frame-head">
+    <span>02 复制弹层 · 默认</span>
+    <span style="color:#8f959e;font-size:12px">从 01 进入</span>
+  </div>
+  <div class="proto-layout">
+    <div class="proto-stage">
+      <div class="modal-wrap">
+        <div class="modal">
+          <header>复制条目</header>
+          <div class="body">
+            <div class="field">
+              <label>名称</label>
+              <span class="proto-dash" style="display:inline-block;position:relative;flex:1">
+                <span class="proto-pin proto-pin-tl">1</span>
+                <input value="季度计划副本">
+              </span>
+            </div>
+            <div class="field">
+              <label>负责人</label>
+              <input value="林夏" readonly>
+            </div>
+          </div>
+          <div class="footer">
+            <span class="proto-dash" style="display:inline-block;position:relative">
+              <span class="proto-pin proto-pin-tl">2</span>
+              <button class="btn primary" type="button">保存</button>
+            </span>
+            <button class="btn" type="button">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="note-panel">
+      <div class="note-panel-title">说明</div>
+      <div class="note-item">
+        <span class="proto-pin">1</span>
+        <div><span class="note-typ">规则</span>名称预填为原名称加「副本」，可修改。负责人带出且不可改。</div>
+      </div>
+      <div class="note-item">
+        <span class="proto-pin">2</span>
+        <div><span class="note-typ">交互</span>主按钮在左。保存成功关闭弹层，回到 01，新行出现在当前页顶部。取消关闭且不新增。</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<section class="proto-frame" data-screen-label="03 保存失败">
+  <div class="proto-frame-head">
+    <span>03 复制弹层 · 保存失败</span>
+    <span style="color:#8f959e;font-size:12px">状态帧，字母编号</span>
+  </div>
+  <div class="proto-layout">
+    <div class="proto-stage">
+      <div class="modal-wrap">
+        <div class="modal">
+          <header>复制条目</header>
+          <div class="body">
+            <div class="field">
+              <label>名称</label>
+              <input value="季度计划副本">
+            </div>
+          </div>
+          <div class="toast">
+            <span class="proto-dash" style="display:inline-block;position:relative">
+              <span class="proto-pin proto-pin-tl">A</span>
+              保存失败，请重试
+            </span>
+          </div>
+          <div class="footer">
+            <button class="btn primary" type="button">保存</button>
+            <button class="btn" type="button">取消</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <aside class="note-panel">
+      <div class="note-panel-title">说明</div>
+      <div class="note-item">
+        <span class="proto-pin">A</span>
+        <div><span class="note-typ">状态</span>保存失败时弹层不关闭，名称保留。可再次保存，或取消离开。加载中按钮置灰，本帧不另画。</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="band">整页新增 · 不圈虚线</div>
+
+<section class="proto-frame" data-screen-label="04 空列表">
+  <div class="proto-frame-head">
+    <span>04 计划列表 · 空状态</span>
+    <span style="color:#8f959e;font-size:12px">整页状态，说明在右栏</span>
+  </div>
+  <div class="proto-layout">
+    <div class="proto-stage">
+      <div class="page">
+        <aside class="side">
+          <div class="logo">工作台</div>
+          <div class="item on">计划</div>
+        </aside>
+        <div class="main">
+          <div class="toolbar"><h2>计划列表</h2></div>
+          <div class="empty">暂无计划</div>
+        </div>
+      </div>
+    </div>
+    <aside class="note-panel">
+      <div class="note-panel-title">说明</div>
+      <div class="note-item">
+        <div><span class="note-typ">状态</span>列表为空时整页换成空状态，不拆成多块虚线。没有行，也就没有「复制」。从这里新建不在本期范围。</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+<div class="foot-space"></div>
 </body>
 </html>

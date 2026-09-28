@@ -6,11 +6,11 @@ Cursor、Claude Code、Codex、ZCode、OpenCode、WorkBuddy 等能加载 `SKILL.
 
 ## 画出来是这样
 
-下面是仓库里的小样例「列表增加复制」：左边是界面，红圈是本期改动，右边是对应说明。
+下面是样例「列表增加复制」的四帧：已有列表只圈改动、弹层默认、失败单独成帧、空列表整页不圈虚线。说明都在右侧。
 
-![样张：左侧弹层，右侧红字说明](docs/preview.png)
+![四帧样张：列表改动、弹层、失败态、空状态](docs/preview.png)
 
-本地打开 [prototype-design/examples/demo-copy-action/prototype.html](prototype-design/examples/demo-copy-action/prototype.html)。同目录还有填好的摸底、结构稿和澄清，方便对照整条链路。
+本地打开 [prototype-design/examples/demo-copy-action/prototype.html](prototype-design/examples/demo-copy-action/prototype.html)。同目录有填好的摸底、结构稿和澄清。
 
 ## 解决什么问题
 
