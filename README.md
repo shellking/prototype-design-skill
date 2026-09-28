@@ -1,17 +1,21 @@
 # Prototype Design Skill
 
-面向产品经理与 Agent 协作的高保真 HTML 原型绘制 Skill。  
-离开特定平台也能跑通：**模板 + 脚手架 + 容器设计系统 + 容器 lint**。
+面向产品经理与各类 AI Agent 协作的高保真 HTML 原型绘制 Skill。  
+不绑定某一家工具；**模板 + 脚手架 + 容器设计系统 + 容器 lint** 开箱可跑。
+
+适用：Cursor、Claude Code、Codex、ZCode、OpenCode、WorkBuddy 等支持 Agent Skill（`SKILL.md`）的环境。
 
 ## 安装
 
-将整个 `prototype-design/` 目录拷到：
+将整个 `prototype-design/` 目录放到你所用 Agent 的 **skills 目录**（名称因工具而异，常见为 `skills/`、`.agents/skills/`、`.claude/skills/`、`.cursor/skills/` 等）。
 
-```text
-.cursor/skills/prototype-design/
-```
+原则：
 
-或个人 `~/.cursor/skills/prototype-design/`。
+1. 目录名保持 `prototype-design`
+2. 内含 `SKILL.md`，且相对路径（`templates/`、`scaffolds/`、`scripts/` …）不要拆散
+3. 按该 Agent 文档重启/刷新 skill 列表后，在对话中点名使用（例如：「按 prototype-design 画原型」）
+
+也可直接在本仓库根目录打开项目，让 Agent 读取 `./prototype-design/`。
 
 ## 目录
 
@@ -34,10 +38,9 @@ prototype-design/
 3. 复制 `templates/clarify.md` → 交用户审澄清
 4. 复制 `scaffolds/hi-fi-frame.html` → 填产品内容与说明
 5. 勾选 `checklists/stages.md`
-6. 高保真交付前：
+6. 高保真交付前（在 skill 目录下）：
 
 ```bash
-cd .cursor/skills/prototype-design   # 或本仓库内路径
 python scripts/check_container.py --file path/to/原型.html --format markdown
 ```
 

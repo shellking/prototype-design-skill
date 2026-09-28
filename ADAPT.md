@@ -2,7 +2,7 @@
 
 ## 1. 安装
 
-拷贝整个 `prototype-design/` 到 Cursor skills 目录（见 README）。
+拷贝整个 `prototype-design/` 到你所用 Agent 的 skills 目录（Cursor / Claude Code / Codex / ZCode / OpenCode / WorkBuddy 等均可，路径以各工具文档为准）。保持目录完整，勿拆散相对引用。
 
 ## 2. 必改
 
