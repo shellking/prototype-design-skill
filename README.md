@@ -27,12 +27,14 @@ prototype-design/
   templates/        # recon / 结构 / 澄清
   scaffolds/        # 线框骨架、高保真空帧
   checklists/       # 默认过闸表
-  scripts/          # check_container.py
+  scripts/          # check_docs.py、check_container.py
+  examples/         # 一份走通的小需求
   adapters/         # 如何挂真实产品壳
 ```
 
 ## 用法（最短路径）
 
+0. 先看 `prototype-design/examples/demo-copy-action/`（填好的 recon、结构、澄清、HTML）
 1. 复制 `templates/recon.md` → 填完再画
 2. 复制 `templates/structure.md` + `scaffolds/wireframe.html` → 交用户审结构
 3. 复制 `templates/clarify.md` → 交用户审澄清
@@ -41,6 +43,7 @@ prototype-design/
 6. 高保真交付前（在 skill 目录下）：
 
 ```bash
+python scripts/check_docs.py --file recon.md --file structure.md --file clarify.md
 python scripts/check_container.py --file path/to/原型.html --format markdown
 ```
 

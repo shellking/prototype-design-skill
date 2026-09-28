@@ -1,26 +1,27 @@
-> 按入口阶段路由加载。本包唯一内置可执行命令是容器 lint；其余用 checklist。
+> 按入口阶段路由加载。
 
 ## 默认执行面：人工 checklist
 
-高保真交用户前，按 [checklists/stages.md](../checklists/stages.md) 勾选当前 Stage。没有勾完不得声称可审阅。
+高保真交用户前，按 [checklists/stages.md](../checklists/stages.md) 勾选当前 Stage。机器检查通过不等于用户已审。
 
-## 内置命令：容器 lint
+## 内置命令
+
+在本 skill 目录下执行。
 
 ```bash
-# 相对本 skill 目录
+python scripts/check_docs.py --file <recon.md> --file <结构稿.md> --file <澄清.md>
 python scripts/check_container.py --file <原型.html> --format markdown
 ```
 
-检查：容器类齐全、`.proto-layout` 横向 flex、标注红与虚线形态、pin↔说明配对、`proto-dash` 不挂真实组件类前缀。
+- **check_docs**：recon / 结构稿 / 澄清是否还留着模板占位和空的必填格。
+- **check_container**：容器类、横向 flex、虚线、pin 与右栏配对、虚线不挂真实组件类、产品区不写「本期新增」一类说明。
 
-可选扩展禁用前缀：
+组件类前缀可追加：`--extra-real-prefix "myui-"`。
 
-```bash
-python scripts/check_container.py --file <html> --extra-real-prefix "myui-" --format markdown
-```
+exit `0` = PASS；非 0 = FAIL。用户只要方向草稿时须在回复里降级，不能当成终稿。
 
-exit `0` = PASS；非 0 = FAIL，禁止递交用户终审（除非用户明确只要方向草稿并已降级声明）。
+先看填好的样例：[examples/demo-copy-action](../examples/demo-copy-action/README.md)。
 
-## 团队可自建的检查（本包不附带）
+## 团队自行搭建
 
-若团队有工程能力，可自建：结构/澄清字段 lint、截图 diff、壳复用检查等。未自建时，用 checklist 与人工对照模板必填段即可。
+真实壳是否复用、和线上截图像不像、声明式编译、交付总闸。接法见 [adapters/PRODUCT.md](../adapters/PRODUCT.md)。

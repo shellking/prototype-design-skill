@@ -12,13 +12,13 @@
 
 - [ ] 已复制 `templates/structure.md`
 - [ ] 全套时已复制并改 `scaffolds/wireframe.html`
-- [ ] §0 触发判定已填
+- [ ] `check_docs.py` 对结构稿 PASS
 - [ ] **用户已确认结构**：______
 
 ## Stage 2 · 澄清
 
 - [ ] 已复制 `templates/clarify.md`
-- [ ] §0 范围对账、§3 文案、§4 五件套无留白
+- [ ] `check_docs.py` 对澄清 PASS
 - [ ] 页面流 mermaid 或 N/A+理由
 - [ ] **用户已确认澄清**：______
 

@@ -22,10 +22,14 @@ class Issue:
     message: str
 
 
+META_IN_STAGE = ("本期新增", "本期改造", "本期变化", "为什么只圈", "虚线怎么")
+
+
 @dataclass
 class Frame:
     label: str
     depth: int
+    stage_text: str = ""
     canvas_pins: List[str] = field(default_factory=list)
     note_pins: List[str] = field(default_factory=list)
     has_layout: bool = False
@@ -48,6 +52,8 @@ class PrototypeParser(HTMLParser):
         self._pin_buf: List[str] = []
         self._pin_kind: Optional[str] = None
         self._in_note_panel_depth: Optional[int] = None
+        self._stage_depth: Optional[int] = None
+        self._stage_frame: Optional[Frame] = None
 
     def _is_real_class(self, cls: str) -> bool:
         if cls.startswith(("proto-", "note-", "doc-", "band", "demo-", "legend", "product-")):
@@ -80,6 +86,8 @@ class PrototypeParser(HTMLParser):
             frame.has_layout = True
         if "proto-stage" in classes:
             frame.has_stage = True
+            self._stage_depth = self._depth
+            self._stage_frame = frame
         if "note-panel" in classes:
             frame.has_note = True
             self._in_note_panel_depth = self._depth
@@ -122,6 +130,10 @@ class PrototypeParser(HTMLParser):
             self._pin_kind = None
             self._pin_buf = []
 
+        if self._stage_depth is not None and self._depth == self._stage_depth:
+            self._stage_depth = None
+            self._stage_frame = None
+
         if self._open_frames and self._open_frames[-1].depth == self._depth:
             self._open_frames.pop()
 
@@ -135,6 +147,8 @@ class PrototypeParser(HTMLParser):
             self._style_buf.append(data)
         if self._capture_pin:
             self._pin_buf.append(data)
+        if self._stage_frame is not None and self._in_note_panel_depth is None:
+            self._stage_frame.stage_text += data
 
     def handle_startendtag(self, tag: str, attrs: List[Tuple[str, Optional[str]]]) -> None:
         # void tags: count depth briefly
@@ -251,6 +265,16 @@ def analyze(html: str, real_prefixes: Tuple[str, ...]) -> List[Issue]:
                         f"帧「{label}」右栏编号 {num} 在画面无对应 pin",
                     )
                 )
+        for phrase in META_IN_STAGE:
+            if phrase in frame.stage_text:
+                issues.append(
+                    Issue(
+                        "ERROR",
+                        "PROTO_C_META_IN_STAGE",
+                        f"帧「{label}」产品区出现「{phrase}」。说明放右栏，产品区只放真实界面文案",
+                    )
+                )
+
         if not canvas and not notes:
             issues.append(
                 Issue(

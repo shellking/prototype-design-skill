@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>DEMO-001 原型 · 列表增加复制</title>
+<style>
+*{ box-sizing:border-box; }
+body{ margin:0; background:#f5f6f8; font:14px/1.5 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; color:#333; }
+.doc-head{ background:#fff; border-bottom:1px solid #e3e6ea; padding:13px 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; position:sticky; top:0; z-index:100; }
+.band{ padding:22px 24px 2px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:8px; }
+.band::before{ content:""; width:4px; height:15px; background:#3370FF; border-radius:2px; }
+.proto-frame{ margin:14px 24px 24px; background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.proto-frame-head{ display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #eef0f3; background:#fbfbfc; }
+.proto-layout{ display:flex; align-items:stretch; }
+.proto-stage{ flex:1; min-width:0; position:relative; overflow-x:auto; overflow-y:visible; background:#eef1f5; padding:24px; }
+.note-panel{ width:300px; flex-shrink:0; border-left:1px solid #eef0f3; background:#fff; padding:16px 18px; }
+.note-panel-title{ color:#f5222d; font-weight:600; font-size:14px; margin:0 0 14px; padding-bottom:10px; border-bottom:1px dashed #ffccc7; }
+.note-item{ display:flex; gap:8px; margin-bottom:16px; font-size:13px; line-height:1.75; color:rgba(0,0,0,.72); }
+.note-typ{ display:inline-block; font-size:11px; color:#d4380d; border:1px solid #ffccc7; border-radius:3px; padding:0 5px; margin-right:5px; line-height:17px; }
+.proto-dash{ position:relative; }
+.proto-dash::after{ content:""; position:absolute; left:-5px; right:-5px; top:-4px; bottom:-4px; border:1px dashed #f5222d; border-radius:3px; pointer-events:none; z-index:6; }
+.proto-pin{ display:inline-flex; width:18px; height:18px; border-radius:50%; background:#f5222d; color:#fff; font:600 12px/1 sans-serif; align-items:center; justify-content:center; flex-shrink:0; }
+.proto-pin-tl{ position:absolute; top:-9px; left:-9px; z-index:7; }
+.note-item .proto-pin{ margin-top:1px; }
+.legend{ font-size:12px; color:#666; }
+.demo-panel{ background:#fff; border:1px solid #e3e6ea; border-radius:4px; padding:16px 18px; max-width:480px; }
+.demo-panel h3{ margin:0 0 12px; font-size:15px; }
+.demo-row{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+.demo-row label{ width:72px; text-align:right; color:#666; font-size:13px; }
+.demo-actions{ display:flex; gap:10px; margin-top:16px; padding-top:12px; border-top:1px solid #eef0f3; }
+.demo-btn{ border:1px solid #d0d5dd; background:#fff; border-radius:3px; padding:6px 14px; font-size:13px; }
+.demo-btn.primary{ background:#3370FF; border-color:#3370FF; color:#fff; }
+</style>
+</head>
+<body>
+<header class="doc-head">
+  <strong>列表增加复制</strong>
+  <span>DEMO-001</span>
+  <span>v1</span>
+  <span>产线：admin</span>
+  <span>终端：PC</span>
+  <span class="legend">红虚线=变化点 ｜ 红编号=对应右侧说明</span>
+</header>
+<div class="band">PC · 样张</div>
+<section class="proto-frame" data-screen-label="01 复制条目">
+  <div class="proto-frame-head"><span>01 从列表复制 · 弹层预填</span><span style="color:#888;font-size:12px">sample</span></div>
+  <div class="proto-layout">
+    <div class="proto-stage">
+      <div class="demo-panel">
+        <h3>复制条目</h3>
+        <div class="demo-row">
+          <label>名称</label>
+          <span class="proto-dash" style="display:inline-block;position:relative">
+            <span class="proto-pin proto-pin-tl">1</span>
+            <input style="width:220px;height:32px;border:1px solid #d0d5dd;border-radius:3px;padding:0 8px" value="季度计划副本">
+          </span>
+        </div>
+        <div class="demo-actions">
+          <span class="proto-dash" style="display:inline-block;position:relative">
+            <span class="proto-pin proto-pin-tl">2</span>
+            <button type="button" class="demo-btn primary">保存</button>
+          </span>
+          <button type="button" class="demo-btn">取消</button>
+        </div>
+      </div>
+    </div>
+    <aside class="note-panel">
+      <div class="note-panel-title">说明</div>
+      <div class="note-item"><span class="proto-pin">1</span><div><span class="note-typ">规则</span>名称预填为原名称加「副本」，可改。</div></div>
+      <div class="note-item"><span class="proto-pin">2</span><div><span class="note-typ">交互</span>保存成功后关闭弹层并回到列表，新行出现在当前页。</div></div>
+    </aside>
+  </div>
+</section>
+</body>
+</html>

@@ -7,7 +7,17 @@ description: HTML 高保真原型、线框与可点击 demo 绘制。基于真�
 
 入口只保留**全程约束**；细节按阶段读取 `references/`。**按需加载 ≠ 省略阶段或闸门**。
 
-本 skill 自包含模板、脚手架、容器设计系统与容器 lint。路径均相对本 skill 目录。
+本 skill 自包含模板、脚手架、容器设计系统与两道通用检查。路径均相对本 skill 目录。
+
+## 开箱负责什么
+
+| 开箱就有 | 各团队自己接 |
+|---|---|
+| 阶段停点、结构/澄清模板、线框与高保真空帧 | 真实产品壳、组件库、线上 CSS |
+| 容器版式与红虚线标注规范 | 像素级对齐真实页面 |
+| 文档留白检查、容器 lint | 编译器、截图 diff、交付总闸 |
+
+没有真实壳也能按样例画出带标注的 HTML。对齐线上视觉时读 [adapters/PRODUCT.md](adapters/PRODUCT.md)。完整走通的小需求见 [examples/demo-copy-action/README.md](examples/demo-copy-action/README.md)。
 
 ## 资产与工作流
 
@@ -20,13 +30,15 @@ description: HTML 高保真原型、线框与可点击 demo 绘制。基于真�
 | 线框骨架 | [scaffolds/wireframe.html](scaffolds/wireframe.html) | 复制后改结构 |
 | 高保真空帧 | [scaffolds/hi-fi-frame.html](scaffolds/hi-fi-frame.html) | 复制后填产品槽 |
 | 阶段过闸表 | [checklists/stages.md](checklists/stages.md) | **默认交付执行面** |
-| 容器 lint | [scripts/check_container.py](scripts/check_container.py) | 高保真交付前建议跑 |
+| 容器 lint | [scripts/check_container.py](scripts/check_container.py) | 高保真交付前跑 |
+| 文档留白检查 | [scripts/check_docs.py](scripts/check_docs.py) | 结构/澄清/recon 交用户前跑 |
+| 走通样例 | [examples/demo-copy-action/README.md](examples/demo-copy-action/README.md) | 先看再改 |
 | 产品壳接法 | [adapters/PRODUCT.md](adapters/PRODUCT.md) | 对齐真实产品时阅读 |
 
 工作包目录建议：`demands/<ID>/`。铁律：**复制 templates/scaffolds 再填，禁止空手编章节或从零拼容器 DOM。**
 
 ```bash
-# 高保真交付前（相对本 skill 目录）
+python scripts/check_docs.py --file <recon.md> --file <结构稿.md> --file <澄清.md>
 python scripts/check_container.py --file <原型.html> --format markdown
 ```
 
