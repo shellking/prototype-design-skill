@@ -1,56 +1,49 @@
-# Prototype Design Skill
+# Prototype Design
 
-面向产品经理与各类 AI Agent 协作的高保真 HTML 原型绘制 Skill。  
-不绑定某一家工具；**模板 + 脚手架 + 容器设计系统 + 容器 lint** 开箱可跑。
+给产品和 Agent 用的高保真 HTML 原型技能：按阶段画页面，改动用红虚线圈出来，说明固定在右侧，每一步等人看过再往下走。
 
-适用：Cursor、Claude Code、Codex、ZCode、OpenCode、WorkBuddy 等支持 Agent Skill（`SKILL.md`）的环境。
+Cursor、Claude Code、Codex、ZCode、OpenCode、WorkBuddy 等能加载 `SKILL.md` 的 Agent 都可以用。
 
-## 安装
+## 画出来是这样
 
-将整个 `prototype-design/` 目录放到你所用 Agent 的 **skills 目录**（名称因工具而异，常见为 `skills/`、`.agents/skills/`、`.claude/skills/`、`.cursor/skills/` 等）。
+下面是仓库里的小样例「列表增加复制」：左边是界面，红圈是本期改动，右边是对应说明。
 
-原则：
+![样张：左侧弹层，右侧红字说明](docs/preview.png)
 
-1. 目录名保持 `prototype-design`
-2. 内含 `SKILL.md`，且相对路径（`templates/`、`scaffolds/`、`scripts/` …）不要拆散
-3. 按该 Agent 文档重启/刷新 skill 列表后，在对话中点名使用（例如：「按 prototype-design 画原型」）
+本地打开 [prototype-design/examples/demo-copy-action/prototype.html](prototype-design/examples/demo-copy-action/prototype.html)。同目录还有填好的摸底、结构稿和澄清，方便对照整条链路。
 
-也可直接在本仓库根目录打开项目，让 Agent 读取 `./prototype-design/`。
+## 解决什么问题
 
-## 目录
+Agent 直接吐一整页原型时，常见结果是：版式每次不一样、说明写进界面里、没等确认就把高保真画完。
 
-```text
-prototype-design/
-  SKILL.md
-  references/       # 分阶段细则
-  design-system/    # 容器/标注视觉语言
-  templates/        # recon / 结构 / 澄清
-  scaffolds/        # 线框骨架、高保真空帧
-  checklists/       # 默认过闸表
-  scripts/          # check_docs.py、check_container.py
-  examples/         # 一份走通的小需求
-  adapters/         # 如何挂真实产品壳
-```
+这个 skill 把这三件事定死：
 
-## 用法（最短路径）
+- **阶段**：摸底 → 结构线框 → 交互澄清 → 样张 → 铺开。每一阶段停下来，等你确认。
+- **版式**：左界面、右说明、红虚线、编号一一对应。配色和栏宽不按需求临时改。
+- **可检查**：文档还是空模板、虚线挂错、编号对不上、产品区写了「本期新增」，脚本会直接失败。
 
-0. 先看 `prototype-design/examples/demo-copy-action/`（填好的 recon、结构、澄清、HTML）
-1. 复制 `templates/recon.md` → 填完再画
-2. 复制 `templates/structure.md` + `scaffolds/wireframe.html` → 交用户审结构
-3. 复制 `templates/clarify.md` → 交用户审澄清
-4. 复制 `scaffolds/hi-fi-frame.html` → 填产品内容与说明
-5. 勾选 `checklists/stages.md`
-6. 高保真交付前（在 skill 目录下）：
+## 怎么用
+
+把整个 `prototype-design/` 放进你的 Agent skills 目录（常见为 `skills/`、`.agents/skills/`、`.claude/skills/`、`.cursor/skills/`），目录不要拆开。然后在对话里说：「按 prototype-design 画原型」。
+
+建议 Agent 先读样例，再复制模板填你的需求：
+
+| 阶段 | 从这里复制 |
+|---|---|
+| 摸底 | `templates/recon.md` |
+| 结构 | `templates/structure.md`，配 `scaffolds/wireframe.html` |
+| 澄清 | `templates/clarify.md` |
+| 高保真 | `scaffolds/hi-fi-frame.html` |
+
+交稿前，在 skill 目录执行：
 
 ```bash
 python scripts/check_docs.py --file recon.md --file structure.md --file clarify.md
 python scripts/check_container.py --file path/to/原型.html --format markdown
 ```
 
-对齐真实产品视觉时，阅读 `adapters/PRODUCT.md`。
-
-改造说明见 [ADAPT.md](./ADAPT.md)。
+真实产品长什么样，由你们自己的壳和 CSS 填进左栏，接法见 [prototype-design/adapters/PRODUCT.md](prototype-design/adapters/PRODUCT.md)。想改成自己团队的版本，见 [ADAPT.md](ADAPT.md)。
 
 ## 许可
 
-MIT — 见 [LICENSE](./LICENSE)。
+MIT — 见 [LICENSE](LICENSE)。
