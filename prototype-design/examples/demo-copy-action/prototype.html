@@ -26,48 +26,40 @@ body{ margin:0; background:#eef1f5; font:14px/1.5 -apple-system,"Segoe UI","Micr
 .proto-pin-tl{ position:absolute; top:-9px; left:-9px; z-index:7; }
 .proto-pin-tr{ position:absolute; top:-9px; right:-9px; z-index:7; }
 .note-item .proto-pin{ margin-top:1px; }
-.app{ display:flex; min-height:460px; background:#f4f6fb; border:1px solid #e6e8ef; border-radius:12px; overflow:hidden; box-shadow:0 1px 2px rgba(16,24,40,.04); }
-.nav{ width:196px; background:#fff; border-right:1px solid #e8ebf2; padding:18px 12px; display:flex; flex-direction:column; }
-.brand{ display:flex; align-items:center; gap:8px; font-weight:650; font-size:15px; padding:0 8px 16px; }
-.mark{ width:22px; height:22px; border-radius:7px; background:linear-gradient(135deg,#3370ff,#6aa1ff); }
-.nav-label{ font-size:11px; color:#98a2b3; letter-spacing:.04em; padding:8px 10px 6px; }
-.nav-item{ display:flex; align-items:center; gap:8px; padding:8px 10px; border-radius:8px; color:#475467; margin-bottom:2px; font-size:13px; }
-.nav-item.on{ background:#eef4ff; color:#175cd3; font-weight:600; }
-.dot{ width:6px; height:6px; border-radius:50%; background:#d0d5dd; }
-.nav-item.on .dot{ background:#3370ff; }
-.nav-user{ margin-top:auto; display:flex; gap:8px; align-items:center; padding:10px 8px 2px; border-top:1px solid #eef0f4; }
-.avatar{ width:28px; height:28px; border-radius:50%; background:#eef4ff; color:#175cd3; display:inline-flex; align-items:center; justify-content:center; font-size:12px; font-weight:600; }
-.nav-user em{ display:block; font-style:normal; color:#98a2b3; font-size:12px; }
-.content{ flex:1; padding:18px 20px 22px; }
-.topbar{ display:flex; justify-content:space-between; align-items:flex-end; margin-bottom:14px; }
-.crumb{ color:#98a2b3; font-size:12px; margin-bottom:2px; }
-.topbar h2{ margin:0; font-size:20px; font-weight:650; letter-spacing:-.02em; }
-.top-actions{ display:flex; gap:8px; align-items:center; }
-.search{ height:34px; border:1px solid #e4e7ec; border-radius:8px; padding:0 12px; width:200px; background:#fff; color:#98a2b3; display:flex; align-items:center; font-size:13px; }
-.card{ background:#fff; border:1px solid #e8ebf2; border-radius:12px; overflow:hidden; }
+.shell{ min-height:468px; background:#F3F3F5; border:1px solid #E8E8E8; display:flex; flex-direction:column; }
+.top{ height:56px; background:#fff; border-bottom:1px solid #E8E8E8; display:flex; align-items:center; padding:0 20px; color:#111; font-size:15px; font-weight:600; }
+.shell-body{ display:flex; flex:1; min-height:0; }
+.menu{ width:180px; background:#fff; border-right:1px solid #E8E8E8; padding:8px 0; }
+.mi{ height:40px; display:flex; align-items:center; padding:0 20px; color:#333; font-size:14px; line-height:22px; }
+.mi.on{ color:#3A84FE; background:#F0F7FF; }
+.work{ flex:1; padding:16px 20px 20px; }
+.filter{ display:flex; align-items:center; margin-bottom:16px; font-size:14px; color:#333; }
+.filter .lab{ margin-right:8px; }
+.sel{ width:140px; height:32px; margin-right:20px; border:1px solid #D9D9D9; border-radius:4px; background:#fff; padding:0 8px; color:#333; }
+.search{ width:230px; height:32px; border:1px solid #D9D9D9; border-radius:4px; background:#fff; padding:0 10px; color:#BFBFBF; display:flex; align-items:center; }
+.card{ background:#fff; border-radius:4px; box-shadow:0 1px 4px rgba(0,0,0,.04); }
 table{ width:100%; border-collapse:collapse; }
-th,td{ text-align:left; padding:12px 16px; border-bottom:1px solid #f2f4f7; font-size:13px; }
-th{ background:#fafbfc; color:#667085; font-weight:500; font-size:12px; }
+th,td{ text-align:left; padding:12px 16px; border-bottom:1px solid #E8E8E8; font-size:14px; line-height:22px; color:#333; }
+th{ background:#FAFAFA; color:#666; font-weight:500; }
 tr:last-child td{ border-bottom:0; }
-.who{ display:flex; align-items:center; gap:8px; }
-.pill{ display:inline-flex; align-items:center; height:22px; padding:0 8px; border-radius:999px; font-size:12px; background:#f2f4f7; color:#475467; }
-.pill.go{ background:#ecfdf3; color:#067647; }
-.ops{ display:flex; gap:12px; align-items:center; }
-.link{ border:0; background:transparent; color:#175cd3; padding:0; font-size:13px; }
-.btn{ border:1px solid #d0d5dd; background:#fff; border-radius:8px; padding:6px 12px; font-size:13px; }
-.btn.primary{ background:#175cd3; border-color:#175cd3; color:#fff; }
-.modal-wrap{ min-height:280px; display:flex; align-items:center; justify-content:center; background:rgba(16,24,40,.45); border-radius:12px; }
-.modal{ width:440px; background:#fff; border-radius:12px; box-shadow:0 20px 40px rgba(16,24,40,.18); }
-.modal header{ display:flex; align-items:center; justify-content:space-between; padding:14px 16px; font-weight:650; border-bottom:1px solid #f2f4f7; }
-.x{ width:28px; height:28px; border:0; border-radius:8px; background:#f2f4f7; color:#475467; font-size:16px; line-height:1; }
-.modal .body{ padding:18px 16px 6px; }
-.field{ display:flex; gap:12px; align-items:center; margin-bottom:14px; }
-.field label{ width:64px; text-align:right; color:#667085; font-size:13px; }
-.field input{ flex:1; height:36px; border:1px solid #e4e7ec; border-radius:8px; padding:0 10px; }
-.footer{ display:flex; gap:8px; justify-content:flex-end; padding:12px 16px 16px; }
-.toast{ margin:0 16px 8px; background:#fff2f0; color:#cf1322; border:1px solid #ffccc7; border-radius:8px; padding:8px 10px; font-size:13px; }
-.empty{ background:#fff; border:1px solid #e8ebf2; border-radius:12px; min-height:240px; display:flex; flex-direction:column; align-items:center; justify-content:center; gap:6px; color:#667085; }
-.empty b{ color:#101828; font-size:15px; }
+.ok{ color:#19BE6B; }
+.muted{ color:#999; }
+.link{ border:0; background:transparent; color:#3A84FE; padding:0; font-size:14px; margin-right:12px; }
+.modal-wrap{ min-height:320px; display:flex; align-items:center; justify-content:center; background:rgba(0,0,0,.6); }
+.modal{ width:480px; background:#fff; border-radius:4px; position:relative; box-shadow:0 6px 16px -8px rgba(0,0,0,.08), 0 9px 28px 0 rgba(0,0,0,.05), 0 12px 48px 16px rgba(0,0,0,.03); }
+.fa-modal-close{ position:absolute; top:0; right:0; width:56px; height:56px; border:0; background:transparent; color:#999; cursor:pointer; }
+.fa-modal-close svg{ display:block; margin:0 auto; }
+.modal header{ padding:16px 24px; color:#333; font-size:16px; line-height:24px; font-weight:500; border-bottom:1px solid #E8E8E8; }
+.modal .body{ padding:24px 24px 8px; }
+.field{ display:flex; align-items:center; margin-bottom:16px; }
+.field label{ width:72px; text-align:right; margin-right:8px; color:#333; }
+.field input,.proto-dash input{ width:100%; height:32px; border:1px solid #D9D9D9; border-radius:4px; padding:0 8px; color:#333; }
+.footer{ text-align:center; padding:10px 16px 16px; border-top:1px solid #E8E8E8; }
+.btn{ height:32px; padding:0 15px; border-radius:4px; border:1px solid #D9D9D9; background:#fff; color:#333; font-size:14px; }
+.btn.primary{ background:#3A84FE; border-color:#3A84FE; color:#fff; margin-right:8px; }
+.toast{ margin:0 24px 16px; padding:8px 12px; background:#fff; border:1px solid #FFCCC7; color:#FA3534; border-radius:4px; font-size:14px; line-height:22px; }
+.empty{ background:#fff; border-radius:4px; min-height:240px; box-shadow:0 1px 4px rgba(0,0,0,.04); display:flex; flex-direction:column; align-items:center; justify-content:center; gap:8px; color:#999; font-size:14px; }
+.empty b{ color:#333; font-weight:500; }
 .foot-space{ height:28px; }
 </style>
 </head>
@@ -88,61 +80,45 @@ tr:last-child td{ border-bottom:0; }
   </div>
   <div class="proto-layout">
     <div class="proto-stage">
-      <div class="app">
-        <aside class="nav">
-          <div class="brand"><span class="mark"></span> North</div>
-          <div class="nav-label">工作区</div>
-          <div class="nav-item"><span class="dot"></span>概览</div>
-          <div class="nav-item on"><span class="dot"></span>计划</div>
-          <div class="nav-item"><span class="dot"></span>成员</div>
-          <div class="nav-user"><span class="avatar">林</span><span>林夏<em>管理员</em></span></div>
-        </aside>
-        <div class="content">
-          <div class="topbar">
-            <div>
-              <div class="crumb">工作区 / 计划</div>
-              <h2>计划</h2>
+      <div class="shell">
+        <div class="top">教育管理后台</div>
+        <div class="shell-body">
+          <aside class="menu">
+            <div class="mi">概况</div>
+            <div class="mi on">计划</div>
+            <div class="mi">学员</div>
+          </aside>
+          <div class="work">
+            <div class="filter">
+              <span class="lab">状态</span>
+              <div class="sel">全部</div>
+              <div class="search">搜索计划名称</div>
             </div>
-            <div class="top-actions">
-              <div class="search">搜索计划</div>
-              <button class="btn primary" type="button">新建</button>
-            </div>
-          </div>
-          <div class="card">
-            <table>
-              <thead><tr><th>名称</th><th>负责人</th><th>状态</th><th>更新</th><th>操作</th></tr></thead>
-              <tbody>
-                <tr>
-                  <td>季度计划</td>
-                  <td><span class="who"><span class="avatar">林</span>林夏</span></td>
-                  <td><span class="pill go">进行中</span></td>
-                  <td>今天 09:24</td>
-                  <td>
-                    <div class="ops">
+            <div class="card">
+              <table>
+                <thead><tr><th>名称</th><th>负责人</th><th>状态</th><th>更新时间</th><th>操作</th></tr></thead>
+                <tbody>
+                  <tr>
+                    <td>季度计划</td><td>林夏</td><td class="ok">进行中</td><td>2026-09-28</td>
+                    <td>
                       <button class="link" type="button">编辑</button>
                       <span class="proto-dash" style="display:inline-block;position:relative">
                         <span class="proto-pin proto-pin-tl">1</span>
                         <button class="link" type="button">复制</button>
                       </span>
-                    </div>
-                  </td>
-                </tr>
-                <tr>
-                  <td>新品上架</td>
-                  <td><span class="who"><span class="avatar">周</span>周宁</span></td>
-                  <td><span class="pill">未开始</span></td>
-                  <td>昨天</td>
-                  <td><button class="link" type="button">编辑</button></td>
-                </tr>
-                <tr>
-                  <td>渠道复盘</td>
-                  <td><span class="who"><span class="avatar">陈</span>陈可</span></td>
-                  <td><span class="pill go">进行中</span></td>
-                  <td>3 天前</td>
-                  <td><button class="link" type="button">编辑</button></td>
-                </tr>
-              </tbody>
-            </table>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>新品上架</td><td>周宁</td><td class="muted">未开始</td><td>2026-09-27</td>
+                    <td><button class="link" type="button">编辑</button></td>
+                  </tr>
+                  <tr>
+                    <td>渠道复盘</td><td>陈可</td><td class="ok">进行中</td><td>2026-09-25</td>
+                    <td><button class="link" type="button">编辑</button></td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
           </div>
         </div>
       </div>
@@ -171,11 +147,12 @@ tr:last-child td{ border-bottom:0; }
     <div class="proto-stage">
       <div class="modal-wrap">
         <div class="modal">
-          <header>复制条目<button class="x" type="button" aria-label="关闭">×</button></header>
+          <button class="fa-modal-close" type="button" aria-label="关闭"><svg viewBox="64 64 896 896" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></button>
+          <header>复制条目</header>
           <div class="body">
             <div class="field">
               <label>名称</label>
-              <span class="proto-dash" style="display:inline-block;position:relative;flex:1">
+              <span class="proto-dash" style="display:block;position:relative;flex:1">
                 <span class="proto-pin proto-pin-tl">1</span>
                 <input value="季度计划副本">
               </span>
@@ -188,9 +165,9 @@ tr:last-child td{ border-bottom:0; }
           <div class="footer">
             <span class="proto-dash" style="display:inline-block;position:relative">
               <span class="proto-pin proto-pin-tl">2</span>
-              <button class="btn primary" type="button">保存</button>
+              <button class="btn primary" type="button">保 存</button>
             </span>
-            <button class="btn" type="button">取消</button>
+            <button class="btn" type="button">取 消</button>
           </div>
         </div>
       </div>
@@ -212,13 +189,14 @@ tr:last-child td{ border-bottom:0; }
 <section class="proto-frame" data-screen-label="03 保存失败">
   <div class="proto-frame-head">
     <span>03 复制弹层 · 保存失败</span>
-    <span style="color:#8f959e;font-size:12px">状态帧，字母编号</span>
+    <span style="color:#8f959e;font-size:12px">状态帧</span>
   </div>
   <div class="proto-layout">
     <div class="proto-stage">
       <div class="modal-wrap">
         <div class="modal">
-          <header>复制条目<button class="x" type="button" aria-label="关闭">×</button></header>
+          <button class="fa-modal-close" type="button" aria-label="关闭"><svg viewBox="64 64 896 896" width="14" height="14" fill="currentColor" aria-hidden="true"><path d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"></path></svg></button>
+          <header>复制条目</header>
           <div class="body">
             <div class="field">
               <label>名称</label>
@@ -227,13 +205,13 @@ tr:last-child td{ border-bottom:0; }
           </div>
           <div class="toast">
             <span class="proto-dash" style="display:inline-block;position:relative">
-              <span class="proto-pin proto-pin-tl">A</span>
+              <span class="proto-pin proto-pin-tl">3</span>
               保存失败，请重试
             </span>
           </div>
           <div class="footer">
-            <button class="btn primary" type="button">保存</button>
-            <button class="btn" type="button">取消</button>
+            <button class="btn primary" type="button">保 存</button>
+            <button class="btn" type="button">取 消</button>
           </div>
         </div>
       </div>
@@ -241,7 +219,7 @@ tr:last-child td{ border-bottom:0; }
     <aside class="note-panel">
       <div class="note-panel-title">说明</div>
       <div class="note-item">
-        <span class="proto-pin">A</span>
+        <span class="proto-pin">3</span>
         <div><span class="note-typ">状态</span>保存失败时弹层不关闭，名称保留。可再次保存，或取消离开。加载中按钮置灰，本帧不另画。</div>
       </div>
     </aside>
@@ -257,18 +235,15 @@ tr:last-child td{ border-bottom:0; }
   </div>
   <div class="proto-layout">
     <div class="proto-stage">
-      <div class="app">
-        <aside class="nav">
-          <div class="brand"><span class="mark"></span> North</div>
-          <div class="nav-label">工作区</div>
-          <div class="nav-item on"><span class="dot"></span>计划</div>
-          <div class="nav-user"><span class="avatar">林</span><span>林夏<em>管理员</em></span></div>
-        </aside>
-        <div class="content">
-          <div class="topbar">
-            <div><div class="crumb">工作区 / 计划</div><h2>计划</h2></div>
+      <div class="shell">
+        <div class="top">教育管理后台</div>
+        <div class="shell-body">
+          <aside class="menu">
+            <div class="mi on">计划</div>
+          </aside>
+          <div class="work">
+            <div class="empty"><b>暂无计划</b><span>没有记录时不出现复制</span></div>
           </div>
-          <div class="empty"><b>还没有计划</b><span>新建一条之后，才会出现复制</span></div>
         </div>
       </div>
     </div>
