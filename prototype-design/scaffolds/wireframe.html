@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>低保真线框骨架 · 〔需求ID〕（Stage 1）</title>
+<style>
+/* Stage 1 only: gray boxes, no brand color, no real product shell */
+:root{
+  --wf-line:#9aa0a6; --wf-line-soft:#cdd1d6; --wf-fill:#eef0f2;
+  --wf-fill-2:#f7f8f9; --wf-ink:#4b5057; --wf-ink-soft:#8b9097;
+}
+*{ box-sizing:border-box; }
+body{ margin:0; background:#f4f6f8; color:var(--wf-ink);
+  font:14px/1.65 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; padding:36px 40px 60px; }
+.wf-frames{ display:flex; flex-wrap:wrap; gap:40px 36px; align-items:flex-start; }
+.wf-doc-head{ margin-bottom:6px; }
+.wf-doc-head h1{ font-size:16px; margin:0 0 4px; color:#3c4043; }
+.wf-doc-head .sub{ color:var(--wf-ink-soft); font-size:12px; }
+.wf-legend{ display:flex; gap:18px; flex-wrap:wrap; margin:10px 0 18px; font-size:12px; color:var(--wf-ink-soft); }
+.wf-legend span{ display:inline-flex; align-items:center; gap:6px; }
+.wf-legend i{ width:22px; height:12px; display:inline-block; }
+.wf-frame{ border:1.5px solid var(--wf-line); border-radius:6px; background:#fff;
+  margin:0 0 22px; max-width:980px; overflow:hidden; }
+.wf-frame > .wf-titlebar{ background:var(--wf-fill); border-bottom:1px solid var(--wf-line-soft);
+  padding:8px 12px; font-weight:600; color:#3c4043; display:flex; justify-content:space-between; align-items:center; }
+.wf-titlebar .wf-meta{ font-weight:400; font-size:12px; color:var(--wf-ink-soft); }
+.wf-region{ border:1px dashed var(--wf-line-soft); border-radius:6px; padding:16px 14px;
+  position:relative; margin:8px; background:var(--wf-fill-2); }
+.wf-region::before{ content:attr(data-label); position:absolute; top:-8px; left:8px;
+  background:#fff; padding:0 6px; font-size:11px; color:var(--wf-ink-soft); }
+.wf-cols{ display:flex; gap:8px; }
+.wf-cols > *{ flex:1; }
+.wf-sidebar{ flex:0 0 120px; }
+.wf-box{ background:var(--wf-fill); border:1px solid var(--wf-line-soft); border-radius:4px;
+  min-height:36px; line-height:1.6; display:flex; align-items:center; padding:9px 12px; color:var(--wf-ink); }
+.wf-stack > *{ margin-bottom:8px; }
+.wf-stack > *:last-child{ margin-bottom:0; }
+.wf-label{ color:#3c4043; }
+.wf-label.req::before{ content:"*"; color:#c0392b; margin-right:2px; }
+.wf-input{ background:#fff; border:1px solid var(--wf-line); border-radius:3px;
+  height:30px; display:flex; align-items:center; padding:0 8px; color:var(--wf-ink-soft); }
+.wf-btn{ background:var(--wf-fill); border:1px solid var(--wf-line); border-radius:3px;
+  padding:5px 14px; display:inline-flex; align-items:center; color:#3c4043; }
+.wf-btn.primary{ border-width:1.5px; font-weight:600; }
+.wf-radio{ display:inline-flex; align-items:center; gap:5px; margin-right:18px; }
+.wf-radio::before{ content:"○"; font-size:14px; }
+.wf-radio.on::before{ content:"◉"; }
+.wf-formrow{ display:flex; gap:12px; align-items:flex-start; padding:6px 0; }
+.wf-formrow .wf-label{ flex:0 0 96px; text-align:right; padding-top:6px; }
+.wf-formrow .wf-control{ flex:1; }
+.wf-help{ font-size:11px; color:var(--wf-ink-soft); margin-top:4px; }
+.wf-footer{ border-top:1px solid var(--wf-line-soft); padding:10px 12px; display:flex; gap:10px; }
+.wf-badge{ display:inline-block; background:#5f6368; color:#fff; font-size:11px;
+  line-height:1; padding:4px 7px; border-radius:3px; vertical-align:middle; margin-right:8px; }
+.wf-flow{ display:flex; align-items:center; gap:8px; flex-wrap:wrap; margin:8px; color:var(--wf-ink); }
+.wf-flow .wf-box{ min-width:90px; justify-content:center; }
+.wf-flow .arrow{ color:var(--wf-ink-soft); }
+.wf-compare{ display:flex; gap:24px; align-items:flex-start; flex-wrap:wrap; }
+.wf-compare > .wf-frame{ flex:0 0 300px; margin:0; }
+.wf-frame .wf-titlebar.now{ color:#1f8a70; }
+.wf-new-hl{ border:1.5px solid #1f8a70; box-shadow:0 0 0 3px rgba(31,138,112,.14); border-radius:16px;
+  display:inline-flex; align-items:center; gap:7px; padding:6px 13px; background:#fff; color:#3c4043; font-size:13px; }
+.wf-newtag{ display:inline-block; background:#1f8a70; color:#fff; font-size:10px; line-height:1;
+  border-radius:3px; padding:3px 6px; margin-left:8px; vertical-align:middle; }
+.wf-extnote{ font-size:12px; color:var(--wf-ink-soft); line-height:1.75; margin:10px 0 0; max-width:640px; }
+.wf-extnote b{ color:#3c4043; }
+</style>
+</head>
+<body>
+
+<div class="wf-doc-head">
+  <h1>低保真线框 · 〔需求ID〕〔需求名〕（Stage 1 结构确认）</h1>
+  <div class="sub">单色灰盒 / 无品牌色 / 无真实壳。只确认结构；视觉到 Stage 3 再做。</div>
+</div>
+<div class="wf-legend">
+  <span><i class="wf-box"></i>占位盒 = 区域/控件位置</span>
+  <span>○/◉ = 单选项</span>
+  <span><i style="background:#5f6368"></i>「本期」= 新增/改造点</span>
+</div>
+
+<!-- ① 页面级：列表宿主 + 弹层位置 -->
+<div class="wf-frame" data-screen-label="P01 页面级">
+  <div class="wf-titlebar">页面级 · 弹层在列表页中的位置 <span class="wf-meta">L0 后台 → 内容区 → 弹层</span></div>
+  <div class="wf-region" data-label="顶栏"><div class="wf-box" style="height:14px;width:40%"></div></div>
+  <div class="wf-cols" style="margin:8px;">
+    <div class="wf-region wf-sidebar" data-label="侧栏" style="min-height:160px;margin:0">
+      <div class="wf-stack">
+        <div class="wf-box" style="height:14px"></div>
+        <div class="wf-box" style="height:14px"></div>
+        <div class="wf-box" style="height:14px"></div>
+      </div>
+    </div>
+    <div class="wf-region" data-label="内容区（列表）" style="min-height:160px;margin:0;position:relative">
+      <div class="wf-box" style="height:14px;width:30%;margin-bottom:10px"></div>
+      <div class="wf-box" style="position:absolute;inset:30px 18px auto 18px;height:90px;border-style:dashed;justify-content:center;color:var(--wf-ink-soft)">［编辑弹层，见下方放大］</div>
+    </div>
+  </div>
+</div>
+
+<!-- ② 模块级：弹层内部 -->
+<div class="wf-frame" style="max-width:560px" data-screen-label="P02 模块级">
+  <div class="wf-titlebar">模块级 · 编辑弹层内部 <span class="wf-meta">L1 弹层 / 表单项</span></div>
+  <div style="padding:14px 16px" class="wf-stack">
+    <div class="wf-formrow"><div class="wf-label req">名称</div><div class="wf-control"><div class="wf-input">请输入名称</div></div></div>
+    <div class="wf-formrow"><div class="wf-label">次数</div><div class="wf-control"><span class="wf-radio on">一次</span><span class="wf-radio">不限</span></div></div>
+    <div class="wf-formrow">
+      <div class="wf-label"><span class="wf-badge">本期</span>权限</div>
+      <div class="wf-control">
+        <span class="wf-radio on">全部访客</span><span class="wf-radio">登录用户</span>
+        <div class="wf-help">选登录用户后，提交前校验登录态</div>
+      </div>
+    </div>
+  </div>
+  <div class="wf-footer"><span class="wf-btn primary">保存</span><span class="wf-btn">取消</span></div>
+</div>
+
+<!-- ③ 流程级 -->
+<div class="wf-frame" style="max-width:760px" data-screen-label="FLOW-A">
+  <div class="wf-titlebar">流程级 · 权限配置数据流 <span class="wf-meta">触发 → 处理 → 影响</span></div>
+  <div class="wf-flow">
+    <span class="wf-box">选择「登录用户」</span><span class="arrow">→</span>
+    <span class="wf-box">保存配置</span><span class="arrow">→</span>
+    <span class="wf-box">前台提交前校验</span><span class="arrow">→</span>
+    <span class="wf-box">未登录 → 引导登录</span>
+  </div>
+</div>
+
+<!-- ④ 差异对照（改动类需求推荐） -->
+<div class="wf-doc-head" style="margin:28px 0 6px"><h1 style="font-size:14px">差异对照 · 现状 ▸ 本期</h1></div>
+<div class="wf-compare">
+  <div class="wf-frame">
+    <div class="wf-titlebar">现状</div>
+    <div style="padding:14px">
+      <div class="wf-box" style="margin-bottom:8px">列表行 · 操作：编辑</div>
+      <div class="wf-box">列表行 · 操作：编辑</div>
+    </div>
+  </div>
+  <div class="wf-frame">
+    <div class="wf-titlebar now">本期</div>
+    <div style="padding:14px">
+      <div class="wf-box" style="margin-bottom:8px">列表行 · 操作：编辑</div>
+      <div class="wf-box">列表行 · 操作：编辑 <span class="wf-new-hl">复制</span><span class="wf-newtag">新增</span></div>
+    </div>
+  </div>
+</div>
+<div class="wf-extnote"><b>区别</b>：本期在操作列新增「复制」。<b>交互</b>：点复制 → 打开编辑弹层（预填）。说明放卡外，产品区只放灰盒。</div>
+
+</body>
+</html>

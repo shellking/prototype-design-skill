@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<title>〔需求ID〕原型 · 高保真空帧</title>
+<style>
+/* === 原型容器设计系统 —— 标注红 #f5222d（禁逐需求改值）=== */
+*{ box-sizing:border-box; }
+body{ margin:0; background:#f5f6f8; font:14px/1.5 -apple-system,"Segoe UI","Microsoft YaHei",sans-serif; color:#333; }
+.doc-head{ background:#fff; border-bottom:1px solid #e3e6ea; padding:13px 24px; display:flex; align-items:center; gap:14px; flex-wrap:wrap; position:sticky; top:0; z-index:100; }
+.band{ padding:22px 24px 2px; font-size:15px; font-weight:600; display:flex; align-items:center; gap:8px; }
+.band::before{ content:""; width:4px; height:15px; background:#3370FF; border-radius:2px; }
+.proto-frame{ margin:14px 24px 0; background:#fff; border-radius:6px; box-shadow:0 1px 4px rgba(0,0,0,.08); }
+.proto-frame-head{ display:flex; justify-content:space-between; align-items:center; padding:13px 18px; border-bottom:1px solid #eef0f3; background:#fbfbfc; }
+.proto-layout{ display:flex; align-items:stretch; }
+.proto-stage{ flex:1; min-width:0; position:relative; overflow-x:auto; overflow-y:visible; background:#eef1f5; padding:24px; }
+.note-panel{ width:300px; flex-shrink:0; border-left:1px solid #eef0f3; background:#fff; padding:16px 18px; }
+.note-panel-title{ color:#f5222d; font-weight:600; font-size:14px; margin:0 0 14px; padding-bottom:10px; border-bottom:1px dashed #ffccc7; }
+.note-item{ display:flex; gap:8px; margin-bottom:16px; font-size:13px; line-height:1.75; color:rgba(0,0,0,.72); }
+.note-item b{ color:#333; }
+.note-typ{ display:inline-block; font-size:11px; color:#d4380d; border:1px solid #ffccc7; border-radius:3px; padding:0 5px; margin-right:5px; line-height:17px; }
+.proto-dash{ position:relative; }
+.proto-dash::after{ content:""; position:absolute; left:-5px; right:-5px; top:-4px; bottom:-4px; border:1px dashed #f5222d; border-radius:3px; pointer-events:none; z-index:6; }
+.proto-pin{ display:inline-flex; width:18px; height:18px; border-radius:50%; background:#f5222d; color:#fff; font:600 12px/1 sans-serif; align-items:center; justify-content:center; flex-shrink:0; }
+.proto-pin-tr{ position:absolute; top:-9px; right:-9px; z-index:7; }
+.proto-pin-tl{ position:absolute; top:-9px; left:-9px; z-index:7; }
+.note-item .proto-pin{ margin-top:1px; }
+.legend{ font-size:12px; color:#666; }
+.product-slot{
+  min-height:280px; background:#fff; border:1px dashed #bfc5ce; border-radius:4px;
+  padding:24px; color:#8b9097; display:flex; align-items:center; justify-content:center; text-align:center;
+}
+.demo-panel{ background:#fff; border:1px solid #e3e6ea; border-radius:4px; padding:16px 18px; max-width:420px; }
+.demo-panel h3{ margin:0 0 12px; font-size:15px; }
+.demo-row{ display:flex; gap:12px; align-items:center; margin-bottom:12px; }
+.demo-row label{ width:72px; text-align:right; color:#666; font-size:13px; }
+.demo-row .ctrl{ flex:1; }
+.demo-actions{ display:flex; gap:10px; justify-content:flex-end; margin-top:16px; padding-top:12px; border-top:1px solid #eef0f3; }
+.demo-btn{ border:1px solid #d0d5dd; background:#fff; border-radius:3px; padding:6px 14px; font-size:13px; }
+.demo-btn.primary{ background:#3370FF; border-color:#3370FF; color:#fff; }
+</style>
+</head>
+<body>
+
+<header class="doc-head">
+  <strong>〔需求名〕</strong>
+  <span>〔需求ID〕</span>
+  <span>v1</span>
+  <span>产线：〔admin/mobile〕</span>
+  <span>终端：〔PC/H5〕</span>
+  <span class="legend">红虚线=本期变化点 ｜ 红编号=对应右侧说明</span>
+</header>
+
+<div class="band">PC · 样张帧（复制本帧继续铺开）</div>
+
+<section class="proto-frame" data-screen-label="01 编辑弹层">
+  <div class="proto-frame-head">
+    <span>01 编辑弹层 · 默认态</span>
+    <span style="color:#888;font-size:12px">pairs / new / sample —— 改成实际身份</span>
+  </div>
+  <div class="proto-layout">
+    <div class="proto-stage">
+      <!-- 产品槽：替换为真实壳/真实页面内容。下面是可删的示范 UI，仅示意虚线用法 -->
+      <div class="demo-panel">
+        <h3>编辑〔对象〕</h3>
+        <div class="demo-row">
+          <label>名称</label>
+          <div class="ctrl"><input style="width:100%;height:32px;border:1px solid #d0d5dd;border-radius:3px;padding:0 8px" value="示例名称"></div>
+        </div>
+        <div class="demo-row">
+          <label>权限</label>
+          <div class="ctrl">
+            <!-- 正确：proto-dash 包在中性 wrapper 上，不挂真实组件类名 -->
+            <span class="proto-dash" style="display:inline-block;position:relative">
+              <span class="proto-pin proto-pin-tl">1</span>
+              <label style="margin-right:12px"><input type="radio" name="perm" checked> 全部访客</label>
+              <label><input type="radio" name="perm"> 登录用户</label>
+            </span>
+          </div>
+        </div>
+        <div class="demo-actions">
+          <span class="proto-dash" style="display:inline-block;position:relative">
+            <span class="proto-pin proto-pin-tl">2</span>
+            <button type="button" class="demo-btn primary">保存</button>
+          </span>
+          <button type="button" class="demo-btn">取消</button>
+        </div>
+      </div>
+      <!--
+      <div class="product-slot">
+        在此放入真实产品壳或页面内容<br>
+        （见 adapters/PRODUCT.md）
+      </div>
+      -->
+    </div>
+    <aside class="note-panel">
+      <div class="note-panel-title">说明</div>
+      <div class="note-item">
+        <span class="proto-pin">1</span>
+        <div><span class="note-typ">交互</span>权限单选：选「登录用户」后，前台提交前校验登录态。</div>
+      </div>
+      <div class="note-item">
+        <span class="proto-pin">2</span>
+        <div><span class="note-typ">规则</span>主按钮在左；保存成功关闭弹层并刷新列表。</div>
+      </div>
+    </aside>
+  </div>
+</section>
+
+</body>
+</html>
